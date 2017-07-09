@@ -1,8 +1,8 @@
 {
-  "modified_date": "2017-07-09T12:58:14.317Z",
+  "modified_date": "2017-07-09T13:00:02.030Z",
   "poloniex": {
-    "btc_steem": "0.00063025",
-    "btc_sbd": "0.00040072",
+    "btc_steem": "0.00063455",
+    "btc_sbd": "0.00040070",
     "trading_fee_per": "0.0025",
     "transfer_fee_btc": "0.0001"
   },
@@ -13,7 +13,7 @@
     "transfer_fee_btc": "0.0001"
   },
   "bithumb": {
-    "btc_krw": "3044000",
+    "btc_krw": "3046000",
     "trading_fee_per": "0.0015",
     "withdraw_fee_krw": "1000"
   },
