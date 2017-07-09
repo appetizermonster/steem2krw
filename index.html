@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Steem2KRW - STEEM을 KRW로 환전하면 얼마가 될까?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
+
+  <!-- vuejs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <div class="text-center">
+      <h1>Steem2KRW</h1>
+      <br />
+      <p>
+        <h4>데이터 마지막 업데이트: {{ new Date(updateDate).toLocaleString() }}</h4>
+      </p>
+      <br />
+      <p>
+        각 거래소별 수수료를 반영해서 계산된 정보입니다.<br /> 하지만, 거래소별 상황을 정확히 반영하지 못할 수 있기 때문에 이 정보는 사실과 다를 수 있습니다.<br />
+      </p>
+      <p class="bg-warning text-warning">
+        <span class="glyphicon glyphicon-info-sign"></span> <a href="exchange_data.json">거래소 데이터</a>는 15분 주기로 업데이트됩니다
+      </p>
+      <br />
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="input-group">
+          <span class="input-group-addon">환전 금액</span>
+          <input type="number" v-model="amount" class="form-control" placeholder="출금하실 STEEM을 입력하세요!">
+          <select class="selectpicker" v-model="currency">
+          <option>STEEM</option>
+          <option>SBD</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <table class="table table-striped">
+          <tr>
+            <th>거래 방법</th>
+            <th>예상 출금액</th>
+          </tr>
+          <tr v-for="result in results" v-bind:class="{ success: result.best }">
+            <td>{{ result.method }} <span v-if="result.best" class="glyphicon glyphicon-thumbs-up"></span></td>
+            <td>{{ result.price.toLocaleString() }}원</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-center col-md-8 col-md-offset-2">
+        <br />
+        Made by <a href="https://steemit.com/@heejin" target="_blank">@heejin</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
