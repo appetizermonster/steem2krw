@@ -1,7 +1,7 @@
 // Scheduler for Google Apps Script
 // Public Properties
 var USER = 'appetizermonster';
-var REPO = 'steem2krw';
+var REPO = 'steem2krw-data';
 var PATH = 'exchange_data.json';
 
 // Main code

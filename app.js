@@ -1,5 +1,8 @@
 'use strict';
 
+// steem2krw-data
+var JSON_URL = '../steem2krw-data/exchange_data.json';
+
 var app = new Vue({
   el: '#app',
   data: {
@@ -21,7 +24,7 @@ var app = new Vue({
 var _data = {};
 
 // fetch exchange data
-$.getJSON('exchange_data.json', function (data) {
+$.getJSON(JSON_URL, function (data) {
   Vue.set(app, 'updateDate', data.modified_date);
   _data = data;
   calculate();
