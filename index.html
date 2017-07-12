@@ -4,6 +4,7 @@
 <head>
   <title>Steem2KRW - STEEM을 KRW로 환전하면 얼마가 될까?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
   <!-- Latest compiled and minified CSS -->
@@ -53,6 +54,8 @@
           <select class="selectpicker" v-model="currency">
           <option>STEEM</option>
           <option>SBD</option>
+          <option>KRW > STEEM</option>
+          <option>KRW > SBD</option>
           </select>
         </div>
       </div>
@@ -65,17 +68,16 @@
             <th>거래 방법</th>
             <th>예상 출금액</th>
           </tr>
-          <tr v-for="result in results" v-bind:class="{ success: result.best }">
-            <td>{{ result.method }} <span v-if="result.best" class="glyphicon glyphicon-thumbs-up"></span></td>
-            <td>{{ result.price.toLocaleString() }}원</td>
+          <tr v-for="result in results" v-bind:class="{ success: result.highlight }">
+            <td>{{ result.method }} <span v-if="result.highlight" class="glyphicon glyphicon-thumbs-up"></span></td>
+            <td>{{ result.price }}</td>
           </tr>
         </table>
       </div>
     </div>
     <div class="row">
       <div class="text-center col-md-8 col-md-offset-2">
-        <br />
-        Made by <a href="https://steemit.com/@heejin" target="_blank">@heejin</a>
+        <br />v{{ version }}, Made by <a href="https://steemit.com/@heejin" target="_blank">@heejin</a>
       </div>
     </div>
   </div>
